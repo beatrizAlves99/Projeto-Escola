@@ -1,0 +1,99 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package br.edu.ifrn.web.modelo;
+
+import java.io.Serializable;
+import java.util.Calendar;
+import java.util.List;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Temporal;
+
+/**
+ *
+ * @author beatriz
+ */
+@Entity
+public class Turma implements Serializable{
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+    private String nome;
+    @Temporal(javax.persistence.TemporalType.DATE)
+    private Calendar dataInicio;
+    @Temporal(javax.persistence.TemporalType.DATE)
+    private Calendar dataFim;
+    private String cargHor;
+    @OneToMany
+    private List<Aluno> alunos;
+    @OneToMany
+    private List<DisciplinaOfertada> disciplinaOfertada;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public Calendar getDataInicio() {
+        return dataInicio;
+    }
+
+    public void setDataInicio(Calendar dataInicio) {
+        this.dataInicio = dataInicio;
+    }
+
+    public Calendar getDataFim() {
+        return dataFim;
+    }
+
+    public void setDataFim(Calendar dataFim) {
+        this.dataFim = dataFim;
+    }
+
+    public String getCargHor() {
+        return cargHor;
+    }
+
+    public void setCargHor(String cargHor) {
+        this.cargHor = cargHor;
+    }
+
+    public List<Aluno> getAlunos() {
+        return alunos;
+    }
+
+    public void setAlunos(List<Aluno> alunos) {
+        this.alunos = alunos;
+    }
+
+    public List<DisciplinaOfertada> getDisciplinaOfertada() {
+        return disciplinaOfertada;
+    }
+
+    public void setDisciplinaOfertada(List<DisciplinaOfertada> disciplinaOfertada) {
+        this.disciplinaOfertada = disciplinaOfertada;
+    }
+
+    
+   
+    
+    
+    
+}

@@ -1,0 +1,11 @@
+br\edu\ifrn\web\controle\CursoControle.class
+br\edu\ifrn\web\modelo\Disciplina.class
+br\edu\ifrn\web\controle\AlunoControle.class
+br\edu\ifrn\web\modelo\Professor.class
+br\edu\ifrn\web\modelo\Aluno.class
+br\edu\ifrn\web\utils\CriarFacesContext.class
+br\edu\ifrn\web\modelo\Turma.class
+br\edu\ifrn\web\bean\AlunoBean.class
+br\edu\ifrn\web\escola\Main.class
+br\edu\ifrn\web\modelo\DisciplinaOfertada.class
+br\edu\ifrn\web\modelo\Curso.class
