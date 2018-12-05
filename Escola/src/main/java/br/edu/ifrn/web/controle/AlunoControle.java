@@ -6,6 +6,7 @@
 package br.edu.ifrn.web.controle;
 
 import br.edu.ifrn.web.modelo.Aluno;
+import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
@@ -27,7 +28,12 @@ public class AlunoControle {
     public void atualizar(Aluno aluno) {
         entityManeger.merge(aluno);
     }
-    
+
+
+     public List<Aluno> listar(){
+        String jpql = "select distinct(l) from Aluno ";
+        return entityManeger.createQuery(jpql,Aluno.class).getResultList();
+    }
    /* public void buscar(Integer id){
         entityManeger.find(type, aluno)
     }*/

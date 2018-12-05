@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core">   
+    <h:head>
+        <title>Alunos</title>
+
+    </h:head>
+    <h:body>
+        <div class="container">
+            <h1><p:outputLabel value="Lista de livros"/></h1>
+            <p:messages/>
+            <p:dataTable var="livro" value="#{listaLivroBean.listar()}" id="tabela">
+                <p:column headerText="Id">
+                    <h:outputText value="#{livro.id}" />
+                </p:column>
+                <p:column headerText="Nome">
+                    <h:outputText value="#{livro.nome}" />
+                </p:column>
+                <p:column headerText="Autores">
+                    <ui:repeat value="#{livro.autores}" var="autor">
+                        <p:outputLabel value="#{autor.nome}"/>
+                    </ui:repeat>
+                </p:column>
+                <p:column headerText="Ações">
+                    <h:form>
+                        <h:commandLink value="Excluir" action="#{listaLivroBean.excluir(livro)}" update="tabela"/>
+                    </h:form>                                  
+                    <a href="#{request.contextPath}/livros.xhtml?id=#{livro.id}">Editar</a>                    
+                </p:column>
+            </p:dataTable>
+            <br/>
+            <h:form>
+                <h:commandButton value="Novo livro" action="#{listaLivroBean.novo()}"/>
+            </h:form>
+        </div>
+            
+    </h:body>
+</html>
