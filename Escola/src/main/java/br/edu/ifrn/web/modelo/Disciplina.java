@@ -24,8 +24,8 @@ public class Disciplina implements Serializable{
     private Integer id;
     private String nomeDis;
     private long cargHor;
-    @ManyToOne
-    private List<Disciplina> dependencias;
+    
+   // private List<Disciplina> dependencias;
 
     public int getId() {
         return id;
@@ -53,13 +53,13 @@ public class Disciplina implements Serializable{
         this.cargHor = cargHor;
     }
 
-    public List<Disciplina> getDependencias() {
+    /*public List<Disciplina> getDependencias() {
         return dependencias;
     }
 
     public void setDependencias(List<Disciplina> dependencias) {
         this.dependencias = dependencias;
-    }
+    }*/
     
     
     
