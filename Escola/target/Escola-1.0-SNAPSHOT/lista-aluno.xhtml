@@ -11,27 +11,8 @@
     </h:head>
     <h:body>
         <div class="container">
-            <h1><p:outputLabel value="Lista de livros"/></h1>
-            <p:messages/>
-            <p:dataTable var="livro" value="#{listaLivroBean.listar()}" id="tabela">
-                <p:column headerText="Id">
-                    <h:outputText value="#{livro.id}" />
-                </p:column>
-                <p:column headerText="Nome">
-                    <h:outputText value="#{livro.nome}" />
-                </p:column>
-                <p:column headerText="Autores">
-                    <ui:repeat value="#{livro.autores}" var="autor">
-                        <p:outputLabel value="#{autor.nome}"/>
-                    </ui:repeat>
-                </p:column>
-                <p:column headerText="Ações">
-                    <h:form>
-                        <h:commandLink value="Excluir" action="#{listaLivroBean.excluir(livro)}" update="tabela"/>
-                    </h:form>                                  
-                    <a href="#{request.contextPath}/livros.xhtml?id=#{livro.id}">Editar</a>                    
-                </p:column>
-            </p:dataTable>
+            <h1><h:outputLabel value="Lista de livros"/></h1>
+            
             <br/>
             <h:form>
                 <h:commandButton value="Novo livro" action="#{listaLivroBean.novo()}"/>

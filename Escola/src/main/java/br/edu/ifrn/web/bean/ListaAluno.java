@@ -34,6 +34,7 @@ public class ListaAluno {
     }
     
      
+     
      public String atualizar(Integer id){
         return "aluno.xhtml?id=" + String.valueOf(id);
     }

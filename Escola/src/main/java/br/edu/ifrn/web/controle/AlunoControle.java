@@ -31,8 +31,8 @@ public class AlunoControle {
 
 
      public List<Aluno> listar(){
-        String jpql = "select distinct(l) from Aluno ";
-        return entityManeger.createQuery(jpql,Aluno.class).getResultList();
+        
+        return entityManeger.createQuery("from aluno").getResultList();
     }
    /* public void buscar(Integer id){
         entityManeger.find(type, aluno)

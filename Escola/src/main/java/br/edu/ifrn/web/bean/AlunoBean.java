@@ -77,7 +77,7 @@ public class AlunoBean {
     
 
 public String salvarAluno(){
-   String path = "/aluno/"  + fotoaluno.getSubmittedFileName() ;
+   String path = "/aluno/"  ;
    String mensagem;
    if(alunomodel.getId() != null){
        alunoDao.atualizar(alunomodel);
