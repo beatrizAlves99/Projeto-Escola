@@ -19,6 +19,32 @@
                     <h:inputText value="#{alunoBean.alunomodel.nomeAluno}" id="nome" styleClass="form-control"/>
                     <h:message for="nome" style="color: red;"/>
                 </div>
+                <div class="form-group">
+                    <h:outputLabel value="CPF" for="cpf"/><br/>
+                    <h:inputText value="#{alunoBean.alunomodel.cpf}" id="cpf" styleClass="form-control"/>
+                    <h:message for="cpf" style="color: red;"/>
+                </div>
+                                <br />
+
+                <div class="form-group">
+                    <h:outputLabel value="Endereço" for="endereco"/><br/>
+                    <h:inputText value="#{alunoBean.alunomodel.endereco}" id="endereco" styleClass="form-control"/>
+                    <h:message for="nome" style="color: red;"/>
+                </div>
+                <br />
+                <div class="form-group">
+                    <h:outputLabel value="Matricula" for="matricula"/><br/>
+                    <h:inputText value="#{alunoBean.alunomodel.matricula}" id="matricula" styleClass="form-control"/>
+                    <h:message for="matricula" style="color: red;"/>
+                </div>
+                <br />
+                <div class="form-group">
+                    <h:outputLabel value="Nascimento" for="nascimento"/><br/>
+                    <h:inputText value="#{alunoBean.alunomodel.nascimento}" id="nascimento" styleClass="form-control"> 
+                        <f:convertDateTime pattern = "dd-mm-yyyy" />
+                    </h:inputText>
+                    <h:message for="nascimento" style="color: red;"/>
+                </div>
                 <h:commandButton value="Cadastrar" action="#{alunoBean.salvarAluno()}" styleClass="btn btn-secondary"/>
             </h:form>
     </h:body>
