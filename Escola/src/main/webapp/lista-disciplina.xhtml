@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core">   
+    
+    
+    <h:head>
+        <title>Disciplinas</title>
+
+    </h:head>
+    <h:body>       
+        <h:link  styleClass="nav-link" value="Inicio" outcome="index"/>
+
+
+
+        <h1><h:outputLabel value="Lista de Disciplinas"/></h1>
+
+        <h:dataTable var="disciplina" value="#{disBean.listarDis()}">
+            <h:column >
+                <h:outputText value="#{disciplina.id}" >ID: </h:outputText>
+            </h:column>
+            <h:column >
+                <h:outputText value="#{disciplina.nomeDis}" >Nome: </h:outputText>
+            </h:column>
+            <h:column >
+                <h:outputText value="#{disciplina.cargHor}" >Carga: </h:outputText>
+            </h:column>
+            
+            <h:column id="acoes">
+                <h:form>
+                    <h:commandLink value="Excluir" action="#{disBean.excluir(disciplina)}" />
+                </h:form>                                  
+                <a href="#{request.contextPath}/disciplina.xhtml?id=#{disciplina.id}">Editar</a>                    
+            </h:column>
+        </h:dataTable>
+        
+        
+        
+    </h:body>
+</html>

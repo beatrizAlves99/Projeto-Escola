@@ -27,12 +27,18 @@ public class DisControle {
         entityManager.merge(disciplina);
     }
     
-    public void excluir(Disciplina disciplina){
-        entityManager.remove(disciplina);
+    public List<Disciplina> listar() {
+        String jpql = "select a from Disciplina a";
+        return entityManager.createQuery(jpql, Disciplina.class).getResultList();
     }
-    
-    public List<Disciplina> listar(){
-        return entityManager.createQuery("from disciplina").getResultList();
+
+     public Disciplina buscar(Integer id){
+        String jpql = "select distinct(a) from Disciplina a  where a.id = :id";       
+        return entityManager.createQuery(jpql,Disciplina.class).setParameter("id", id).getSingleResult();
+    }
+     @Transactional
+    public void excluir(Disciplina disciplina) {
+        entityManager.remove(buscar(disciplina.getId()));
     }
     
     

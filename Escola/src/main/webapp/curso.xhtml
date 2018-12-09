@@ -4,6 +4,10 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:t="http://xmlns.jcp.org/jsf/passthrough">    
+    <f:metadata>
+        <f:viewParam value="#{cursoBean.idbeanCurso}" name="id" />
+        <f:viewAction action="#{cursoBean.carregarLivro()}" />
+    </f:metadata>
     <h:head>
         <title>Cursos</title>
     </h:head>

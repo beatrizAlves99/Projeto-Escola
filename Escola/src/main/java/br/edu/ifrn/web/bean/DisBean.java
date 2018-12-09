@@ -7,6 +7,7 @@ package br.edu.ifrn.web.bean;
 
 import br.edu.ifrn.web.controle.DisControle;
 import br.edu.ifrn.web.modelo.Disciplina;
+import java.util.List;
 import javax.enterprise.inject.Model;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
@@ -26,7 +27,17 @@ public class DisBean {
     @Inject
     private FacesContext facesContext;
 
-    private int idDisciplina;
+    private List<Disciplina> listaDisciplina;
+
+    private Integer idDisciplina;
+
+    public List<Disciplina> getListaDisciplina() {
+        return listaDisciplina;
+    }
+
+    public void setListaDisciplina(List<Disciplina> listaDisciplina) {
+        this.listaDisciplina = listaDisciplina;
+    }
 
     public DisControle getDisDAO() {
         return disDAO;
@@ -52,11 +63,11 @@ public class DisBean {
         this.facesContext = facesContext;
     }
 
-    public int getIdDisciplina() {
+    public Integer getIdDisciplina() {
         return idDisciplina;
     }
 
-    public void setIdDisciplina(int idDisciplina) {
+    public void setIdDisciplina(Integer idDisciplina) {
         this.idDisciplina = idDisciplina;
     }
 
@@ -78,6 +89,32 @@ public class DisBean {
 
         return "disciplina.xhtml";
 
+    }
+
+    public void excluir(Disciplina disciplina) {
+        disDAO.excluir(disciplina);
+        disDAO = null;
+    }
+
+    public List<Disciplina> listarDis() {
+        if (listaDisciplina == null) {
+            listaDisciplina = disDAO.listar();
+        }
+        return listaDisciplina;
+    }
+
+    public String atualizar(Integer id) {
+        return "curso.xhtml?id=" + String.valueOf(id);
+    }
+
+    public void carregarLivro() {
+        if (idDisciplina != null) {
+            Disciplina disciplina = disDAO.buscar(idDisciplina);
+            if (disciplina != null) {
+                this.dismodel = disciplina;
+                return;
+            }
+        }
     }
 
 }

@@ -35,13 +35,15 @@ public class Turma implements Serializable{
     @OneToMany
     private List<DisciplinaOfertada> disciplinaOfertada;
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
     public void setId(Integer id) {
         this.id = id;
     }
+
+    
 
     public String getNome() {
         return nome;

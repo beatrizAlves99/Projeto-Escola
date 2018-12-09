@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:t="http://xmlns.jcp.org/jsf/passthrough">   
+    <f:metadata>
+        <f:viewParam value="#{turmaBean.idTurma}" name="id" />
+        <f:viewAction action="#{turmaBean.carregarLivro()}" />
+    </f:metadata>
+    <h:head>
+        <title>Turmas</title>
+
+    </h:head>
+    <h:body>
+        <f:metadata>
+            <f:viewParam value="#{turmaBean.idTurma}" name="idTurma" />
+        </f:metadata>
+        <h:form id="form-turmas"  style="form-horizontal" enctype="multipart/form-data" >
+            <h:inputHidden value="#{turmaBean.turmamodel.id}" />
+            <div class="form-group">
+                <h:outputLabel value="Nome" for="nome"/><br/>
+                <h:inputText value="#{turmaBean.turmamodel.nome}" id="nome" styleClass="form-control"/>
+                <h:message for="nome" style="color: red;"/>
+            </div>
+            <div class="form-group">
+                <h:outputLabel value="Carga Horária" for="carga"/><br/>
+                <h:inputText value="#{turmaBean.turmamodel.cargHor}" id="carga" styleClass="form-control"/>
+                <h:message for="carga" style="color: red;"/>
+            </div>
+            <br />
+
+            <div class="form-group">
+                <h:outputLabel value="Data de inicio" for="inicio"/><br/>
+                <h:inputText value="#{turmaBean.turmamodel.dataInicio}" id="inicio" styleClass="form-control"/>
+                <h:message for="inicio" style="color: red;"/>
+            </div>
+            <br />
+            <div class="form-group">
+                <h:outputLabel value="Data de Finalização" for="fim"/><br/>
+                <h:inputText value="#{turmaBean.turmamodel.dataFim}" id="fim" styleClass="form-control"/>
+                <h:message for="fim" style="color: red;"/>
+            </div>
+            <br />
+            
+            <h:commandButton value="Cadastrar" action="#{turmaBean.salvarTurma()}" styleClass="btn btn-secondary"/>
+        </h:form>
+        <h:link  styleClass="nav-link" value="Inicio" outcome="index"/>
+
+    </h:body>
+</html>

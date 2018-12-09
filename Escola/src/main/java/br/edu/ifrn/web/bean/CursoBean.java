@@ -7,6 +7,7 @@ package br.edu.ifrn.web.bean;
 
 import br.edu.ifrn.web.controle.CursoControle;
 import br.edu.ifrn.web.modelo.Curso;
+import java.util.List;
 import javax.enterprise.inject.Model;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
@@ -25,8 +26,10 @@ public class CursoBean {
     private Curso cursomodel;
     @Inject
     private FacesContext facesContext;
+    
+    private List<Curso> listaCurso;
 
-    private int idbeanCurso;
+    private Integer idbeanCurso;
 
     public CursoControle getCursoDAO() {
         return cursoDAO;
@@ -52,20 +55,30 @@ public class CursoBean {
         this.facesContext = facesContext;
     }
 
-    public int getIdbeanCurso() {
+    public Integer getIdbeanCurso() {
         return idbeanCurso;
     }
 
-    public void setIdbeanCurso(int idbeanCurso) {
+    public void setIdbeanCurso(Integer idbeanCurso) {
         this.idbeanCurso = idbeanCurso;
     }
+
+    public List<Curso> getListaCurso() {
+        return listaCurso;
+    }
+
+    public void setListaCurso(List<Curso> listaCurso) {
+        this.listaCurso = listaCurso;
+    }
+    
+    
 
     public String salvarCurso() {
         String path = "/curso/";
         String mensagem;
 
         if (cursomodel.getId() != null) {
-            cursoDAO.atualizarCurso(cursomodel);
+            cursoDAO.atualizar(cursomodel);
             mensagem = "Curso Atuaizado com sucesso";
         } else {
             cursoDAO.salvarCurso(cursomodel);
@@ -74,6 +87,34 @@ public class CursoBean {
         facesContext.getExternalContext().getFlash().setKeepMessages(true);
         facesContext.addMessage(null, new FacesMessage(mensagem));
         return "curso.xhtml";
+    }
+    
+    public void excluir(Curso curso) {
+        cursoDAO.excluir(curso);
+        cursoDAO = null;
+    }
+
+    public List<Curso> listarCurso() {
+        if (listaCurso == null) {
+            listaCurso = cursoDAO.listar();
+        }
+        return listaCurso;
+    }
+    
+    
+    public String atualizar(Integer id){
+        return "curso.xhtml?id=" + String.valueOf(id);
+    }
+    
+    
+    public void carregarLivro(){
+        if (idbeanCurso != null){
+            Curso curso = cursoDAO.buscar(idbeanCurso);
+            if (curso != null){
+                this.cursomodel = curso;
+                return;
+            }
+        }             
     }
 
 }

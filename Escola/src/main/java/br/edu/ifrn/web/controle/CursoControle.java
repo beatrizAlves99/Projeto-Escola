@@ -23,16 +23,23 @@ public class CursoControle {
         entityManager.persist(curso);
     }
     
-    public List<Curso> listarCurso(){
-        return entityManager.createQuery("from curso").getResultList();
-    }
-    
-    public void atualizarCurso(Curso curso){
+    @Transactional
+    public void atualizar(Curso curso) {
         entityManager.merge(curso);
     }
-    
-    public void excluirCurso(Curso curso){
-        entityManager.remove(curso);
+
+    public List<Curso> listar() {
+        String jpql = "select a from Curso a";
+        return entityManager.createQuery(jpql, Curso.class).getResultList();
+    }
+
+     public Curso buscar(Integer id){
+        String jpql = "select distinct(a) from Curso a  where a.id = :id";       
+        return entityManager.createQuery(jpql,Curso.class).setParameter("id", id).getSingleResult();
+    }
+     @Transactional
+    public void excluir(Curso curso) {
+        entityManager.remove(buscar(curso.getId()));
     }
     
 }

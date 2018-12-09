@@ -16,7 +16,8 @@ import javax.persistence.Id;
  * @author beatriz
  */
 @Entity
-public class Professor implements Serializable{
+public class Professor implements Serializable {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -25,7 +26,7 @@ public class Professor implements Serializable{
     private String endereco;
     private long celular;
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
@@ -64,9 +65,5 @@ public class Professor implements Serializable{
     public void setCelular(long celular) {
         this.celular = celular;
     }
-    
-    
-    
-    
-    
+
 }
