@@ -24,22 +24,24 @@ public class AlunoControle {
     public void salvar(Aluno aluno) {
         entityManeger.persist(aluno);
     }
+
     @Transactional
     public void atualizar(Aluno aluno) {
         entityManeger.merge(aluno);
     }
 
-
-     public List<Aluno> listar(){
-        
-        return entityManeger.createQuery("from aluno").getResultList();
+    public List<Aluno> listar() {
+        String jpql = "select a from Aluno a";
+        return entityManeger.createQuery(jpql, Aluno.class).getResultList();
     }
-   /* public void buscar(Integer id){
-        entityManeger.find(type, aluno)
-    }*/
 
-    public void excluir(Aluno aluno){
-        entityManeger.remove(aluno);
+     public Aluno buscar(Integer id){
+        String jpql = "select distinct(a) from Aluno a  where a.id = :id";       
+        return entityManeger.createQuery(jpql,Aluno.class).setParameter("id", id).getSingleResult();
     }
-    
+     @Transactional
+    public void excluir(Aluno aluno) {
+        entityManeger.remove(buscar(aluno.getId()));
+    }
+
 }

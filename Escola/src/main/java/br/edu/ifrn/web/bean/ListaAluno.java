@@ -9,6 +9,7 @@ import br.edu.ifrn.web.controle.AlunoControle;
 import br.edu.ifrn.web.modelo.Aluno;
 import java.util.List;
 import javax.enterprise.inject.Model;
+import javax.inject.Inject;
 
 /**
  *
@@ -16,8 +17,9 @@ import javax.enterprise.inject.Model;
  */
 @Model
 public class ListaAluno {
-
+    @Inject
     private AlunoControle alunoControl;
+    
     private List<Aluno> alunoList;
 
     public List<Aluno> listar() {
@@ -28,9 +30,12 @@ public class ListaAluno {
     }
 
     
-     public void excluir(Aluno aluno){
+     public String excluir(Aluno aluno){
+         String path = "/lista-aluno/";
         alunoControl.excluir(aluno);
         alunoList = null;
+        
+        return "lista-aluno.xhtml";
     }
     
      

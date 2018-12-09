@@ -2,22 +2,44 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      
+
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://java.sun.com/jsf/core">   
+    
+    
     <h:head>
         <title>Alunos</title>
 
     </h:head>
-    <h:body>
-        <div class="container">
-            <h1><h:outputLabel value="Lista de livros"/></h1>
-            
-            <br/>
-            <h:form>
-                <h:commandButton value="Novo livro" action="#{listaLivroBean.novo()}"/>
-            </h:form>
-        </div>
-            
+    <h:body>       
+        <h:link  styleClass="nav-link" value="Inicio" outcome="index"/>
+
+
+
+        <h1><h:outputLabel value="Lista de Alunos"/></h1>
+
+        <h:dataTable var="aluno" value="#{alunoBean.listarAluno()}">
+            <h:column >
+                <h:outputText value="#{aluno.id}" >ID: </h:outputText>
+            </h:column>
+            <h:column >
+                <h:outputText value="#{aluno.nomeAluno}" >Nome: </h:outputText>
+            </h:column>
+            <h:column >
+                <h:outputText value="#{aluno.matricula}" >Matricula: </h:outputText>
+            </h:column>
+            <h:column >
+                <h:outputText value="#{aluno.nascimento}" >Data de Nascimento: </h:outputText>
+            </h:column>
+            <h:column id="acoes">
+                <h:form>
+                    <h:commandLink value="Excluir" action="#{alunoBean.excluirAluno(aluno)}" />
+                </h:form>                                  
+                <a href="#{request.contextPath}/aluno.xhtml?id=#{aluno.id}">Editar</a>                    
+            </h:column>
+        </h:dataTable>
+        
+        
+        
     </h:body>
 </html>

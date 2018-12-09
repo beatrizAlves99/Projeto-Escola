@@ -29,13 +29,15 @@ public class Curso implements Serializable  {
     @OneToMany
     private List<Turma> turmas;
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
     public void setId(Integer id) {
         this.id = id;
     }
+
+    
 
     public String getNome() {
         return nome;

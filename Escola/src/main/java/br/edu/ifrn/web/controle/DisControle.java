@@ -5,7 +5,7 @@
  */
 package br.edu.ifrn.web.controle;
 
-import br.edu.ifrn.web.modelo.Curso;
+import br.edu.ifrn.web.modelo.Disciplina;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -15,24 +15,27 @@ import javax.transaction.Transactional;
  *
  * @author beatriz
  */
-public class CursoControle {
+public class DisControle {
     @PersistenceContext
     private EntityManager entityManager;
     @Transactional
-    public void salvarCurso(Curso curso){
-        entityManager.persist(curso);
+    public void salvar(Disciplina disciplina){
+        entityManager.persist(disciplina);
+    }
+    @Transactional
+    public void atualizar(Disciplina disciplina){
+        entityManager.merge(disciplina);
     }
     
-    public List<Curso> listarCurso(){
-        return entityManager.createQuery("from curso").getResultList();
+    public void excluir(Disciplina disciplina){
+        entityManager.remove(disciplina);
     }
     
-    public void atualizarCurso(Curso curso){
-        entityManager.merge(curso);
+    public List<Disciplina> listar(){
+        return entityManager.createQuery("from disciplina").getResultList();
     }
     
-    public void excluirCurso(Curso curso){
-        entityManager.remove(curso);
-    }
+    
+    
     
 }

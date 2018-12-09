@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:t="http://xmlns.jcp.org/jsf/passthrough">    
+    <h:head>
+        <title>Disciplinas</title>
+    </h:head>
+    <h:body>
+        <f:metadata>
+            <f:viewParam value="#{disBean.idDisciplina}"  name="idCurso" />
+        </f:metadata>
+        <h:form id="form-disciplinas"  style="form-horizontal" enctype="multipart/form-data" >
+            <h:inputHidden value="#{disBean.dismodel.id}" />
+            <div class="form-group">
+                <h:outputLabel value="Cadastre sua disciplina aqui! " for="nome"/><br/>
+                <h:inputText value="#{disBean.dismodel.nomeDis}" id="nome" styleClass="form-control"/>
+                <h:message for="name" style="color: red;"/>
+            </div>
+            <br />
+            <div class="form-group">
+                <h:outputLabel value="Carga Horária " for="hora"/><br/>
+                <h:inputText value="#{disBean.dismodel.cargHor}" id="hora" styleClass="form-control"/>
+                <h:message for="hora" style="color: red;"/>
+            </div>
+            <br />
+            <h:commandButton value="Cadastrar" action="#{disBean.salvarDis()}" styleClass="btn btn-secondary"/>
+        </h:form>
+        <h:link  styleClass="nav-link" value="Inicio" outcome="index"/>
+
+
+    </h:body>
+
+</html>

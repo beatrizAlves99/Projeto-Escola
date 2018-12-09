@@ -19,14 +19,15 @@ import javax.persistence.Temporal;
  */
 @Entity
 public class Aluno implements Serializable {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String nomeAluno;
-    private int matricula;
+    private Integer matricula;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date nascimento;
-    private int cpf;
+    private Integer cpf;
     private String endereco;
 
     public Integer getId() {
@@ -36,8 +37,7 @@ public class Aluno implements Serializable {
     public void setId(Integer id) {
         this.id = id;
     }
-    
-    
+
     public String getNomeAluno() {
         return nomeAluno;
     }
@@ -46,13 +46,11 @@ public class Aluno implements Serializable {
         this.nomeAluno = nomeAluno;
     }
 
-    
-
-    public int getMatricula() {
+    public Integer getMatricula() {
         return matricula;
     }
 
-    public void setMatricula(int matricula) {
+    public void setMatricula(Integer matricula) {
         this.matricula = matricula;
     }
 
@@ -64,11 +62,11 @@ public class Aluno implements Serializable {
         this.nascimento = nascimento;
     }
 
-    public int getCpf() {
+    public Integer getCpf() {
         return cpf;
     }
 
-    public void setCpf(int cpf) {
+    public void setCpf(Integer cpf) {
         this.cpf = cpf;
     }
 
@@ -79,7 +77,5 @@ public class Aluno implements Serializable {
     public void setEndereco(String endereco) {
         this.endereco = endereco;
     }
-    
-    
-    
+
 }
