@@ -25,9 +25,8 @@ public class Curso implements Serializable  {
     private Integer id;
     private String nome;
     @OneToMany
-    private List<Disciplina> disciplina;
-    @OneToMany
-    private List<Turma> turmas;
+    private List<Disciplina> disciplina = new ArrayList();
+
 
     public Integer getId() {
         return id;
@@ -55,13 +54,7 @@ public class Curso implements Serializable  {
         this.disciplina = disciplina;
     }
 
-    public List<Turma> getTurmas() {
-        return turmas;
-    }
-
-    public void setTurmas(List<Turma> turmas) {
-        this.turmas = turmas;
-    }
+   
     
 
     
