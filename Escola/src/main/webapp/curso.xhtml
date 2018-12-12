@@ -10,8 +10,17 @@
     </f:metadata>
     <h:head>
         <title>Cursos</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"/>
+
+            <!-- Compiled and minified JavaScript -->
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     </h:head>
     <h:body>
+        <nav>
+            <div class="nav-wrapper">
+                <a href="index.xhtml" class="brand-logo">Escola</a>
+            </div>
+        </nav>
         <f:metadata>
             <f:viewParam value="#{cursoBean.idbeanCurso}"  name="idCurso" />
         </f:metadata>
@@ -19,7 +28,7 @@
             <h:inputHidden value="#{cursoBean.cursomodel.id}" />
             <div class="form-group">
                 <h:outputLabel value="Cadastre seu curso aqui! " for="nome"/><br/>
-                <h:inputText value="#{cursoBean.cursomodel.nome}" id="nome" styleClass="form-control"/>
+                <h:inputText value="#{cursoBean.cursomodel.nome}" id="nome" styleClass="form-control" />
                 <h:message for="name" style="color: red;"/>
             </div>
             <br />

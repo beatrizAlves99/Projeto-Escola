@@ -10,9 +10,18 @@
     </f:metadata>
     <h:head>
         <title>Turmas</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"/>
+
+            <!-- Compiled and minified JavaScript -->
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
     </h:head>
     <h:body>
+        <nav>
+            <div class="nav-wrapper">
+                <a href="index.xhtml" class="brand-logo">Escola</a>
+            </div>
+        </nav>
         <f:metadata>
             <f:viewParam value="#{turmaBean.idTurma}" name="idTurma" />
         </f:metadata>
@@ -45,7 +54,6 @@
             
             <h:commandButton value="Cadastrar" action="#{turmaBean.salvarTurma()}" styleClass="btn btn-secondary"/>
         </h:form>
-        <h:link  styleClass="nav-link" value="Inicio" outcome="index"/>
 
     </h:body>
 </html>

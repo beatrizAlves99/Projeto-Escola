@@ -1,0 +1,65 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core">   
+
+
+    <h:head>
+        <title>Disciplinas</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"/>
+
+        <!-- Compiled and minified JavaScript -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+    </h:head>
+    <h:body>       
+        <nav>
+            <div class="nav-wrapper">
+                <a href="index.xhtml" class="brand-logo">Escola</a>
+            </div>
+        </nav>
+        <h:link  styleClass="nav-link" value="Novo Professor" outcome="professor"/>
+
+
+
+        <h1><h:outputLabel value="Lista de Disciplinas"/></h1>
+
+        <h:dataTable var="prof" value="#{profBean.listarProfessor()}">
+            <h:column >
+                <f:facet name="header">ID</f:facet>
+
+                <h:outputText value="#{prof.id}" >ID: </h:outputText>
+            </h:column>
+            <h:column >
+                <f:facet name="header">Nome</f:facet>
+                <h:outputText value="#{prof.nomeProf}" >Nome: </h:outputText>
+            </h:column>
+            <h:column >
+                <f:facet name="header">Endereço </f:facet>
+                <h:outputText value="#{prof.endereco}" >Endereço: </h:outputText>
+            </h:column>
+            <h:column >
+                <f:facet name="header">Horas</f:facet>
+                <h:outputText value="#{prof.cpf}" >Horas: </h:outputText>
+            </h:column>
+            <h:column >
+                <f:facet name="header">Celular</f:facet>
+                <h:outputText value="#{prof.celular}" >Celular: </h:outputText>
+            </h:column>
+
+            <h:column id="acoes">
+                <f:facet name="header">Ações</f:facet>
+                <h:form>
+                    <h:commandLink value="Excluir" action="#{profBean.excluirProfessor(professor)}" />
+                </h:form>                                  
+                <a href="#{request.contextPath}/professor.xhtml?id=#{prof.id}">Editar</a>                    
+            </h:column>
+        </h:dataTable>
+
+
+
+    </h:body>
+</html>

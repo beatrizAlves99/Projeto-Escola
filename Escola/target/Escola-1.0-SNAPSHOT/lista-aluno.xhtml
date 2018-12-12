@@ -9,10 +9,20 @@
     
     <h:head>
         <title>Alunos</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"/>
+
+            <!-- Compiled and minified JavaScript -->
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
     </h:head>
-    <h:body>       
-        <h:link  styleClass="nav-link" value="Inicio" outcome="index"/>
+    <h:body>   
+        <nav>
+            <div class="nav-wrapper">
+                <a href="index.xhtml" class="brand-logo">Escola</a>
+            </div>
+        </nav>
+        <hr/>
+        <h:link  styleClass="nav-link" value="Novo Aluno" outcome="aluno"/>
 
 
 
@@ -20,18 +30,32 @@
 
         <h:dataTable var="aluno" value="#{alunoBean.listarAluno()}">
             <h:column >
+                
+                    <f:facet name="header">ID</f:facet>
                 <h:outputText value="#{aluno.id}" >ID: </h:outputText>
             </h:column>
+            <br/>
             <h:column >
+                
+                    <f:facet name="header">Nome</f:facet>
                 <h:outputText value="#{aluno.nomeAluno}" >Nome: </h:outputText>
             </h:column>
+            <br/>
             <h:column >
+                
+                    <f:facet name="header">Matrícula</f:facet>
                 <h:outputText value="#{aluno.matricula}" >Matricula: </h:outputText>
             </h:column>
+            <br/>
             <h:column >
+                
+                    <f:facet name="header">Nascimento</f:facet>
                 <h:outputText value="#{aluno.nascimento}" >Data de Nascimento: </h:outputText>
             </h:column>
+            <br/>
             <h:column id="acoes">
+                
+                    <f:facet name="header">Ações</f:facet>
                 <h:form>
                     <h:commandLink value="Excluir" action="#{alunoBean.excluirAluno(aluno)}" />
                 </h:form>                                  
