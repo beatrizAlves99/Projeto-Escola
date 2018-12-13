@@ -1,0 +1,79 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:t="http://xmlns.jcp.org/jsf/passthrough">   
+    <f:metadata>
+        <f:viewParam value="#{turmaBean.idTurma}" name="id" />
+        <f:viewAction action="#{turmaBean.carregarLivro()}" />
+    </f:metadata>
+    <h:head>
+        <title>Turmas</title>
+       <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"/>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>-->
+
+    </h:head>
+    <h:body>
+        <nav>
+            <div class="nav-wrapper">
+                <a href="index.xhtml" class="brand-logo">Escola</a>
+            </div>
+        </nav>
+        <f:metadata>
+            <f:viewParam value="#{turmaBean.idTurma}" name="idTurma" />
+        </f:metadata>
+        <h:form id="form-turmas"  style="form-horizontal" enctype="multipart/form-data" >
+            <h:inputHidden value="#{turmaBean.turmamodel.id}" />
+            <div class="form-group">
+                <h:outputLabel value="Nome" for="nome"/><br/>
+                <h:inputText value="#{turmaBean.turmamodel.nome}" id="nome" styleClass="form-control"/>
+                <h:message for="nome" style="color: red;"/>
+            </div>
+            <div class="form-group">
+                <h:outputLabel value="Carga Horária" for="carga"/><br/>
+                <h:inputText value="#{turmaBean.turmamodel.cargHor}" id="carga" styleClass="form-control"/>
+                <h:message for="carga" style="color: red;"/>
+            </div>
+            <br />
+
+            <div class="form-group">
+                <h:outputLabel value="Data de inicio" for="inicio"/><br/>
+                <h:inputText value="#{turmaBean.turmamodel.dataInicio}" id="inicio" styleClass="form-control"/>
+                <h:message for="inicio" style="color: red;"/>
+            </div>
+            <br />
+            <div class="form-group">
+                <h:outputLabel value="Data de Finalização" for="fim"/><br/>
+                <h:inputText value="#{turmaBean.turmamodel.dataFim}" id="fim" styleClass="form-control"/>
+                <h:message for="fim" style="color: red;"/>
+            </div>
+            <br />
+            <!--<div class="form-group">
+                <h:outputLabel value="Curso" for="curso"/><br/>
+                <h:inputText value="#{turmaBean.turmamodel.curso.id}" id="curso" styleClass="form-control"/>
+                <h:message for="curso" style="color: red;"/>
+            </div>-->
+            <br/>
+            <div class="form-group">
+                <h:outputLabel value="Curso" for="cursos"/><br/>
+                <h:selectManyListbox value="#{turmaBean.turmamodel.curso}"  id="cursos" styleClass="form-control">
+                    <f:selectItems value="#{turmaBean.listarCurso()}" 
+                                   var="curso" 
+                                   itemLabel="#{curso.nome}" 
+                                   itemValue="#{curso}"/>
+                </h:selectManyListbox>  
+                <!--<h:selectManyListbox value = "#{cursoBean.listarCurso()}"> 
+                    <f:selectItem itemValue = "#{cursoBean.cursomodel.nome}" itemLabel = "Item 1" /> 
+                    
+                </h:selectManyListbox>      -->        
+
+                <h:message for="autores" style="color: red;"/>
+            </div>
+
+            <h:commandButton value="Cadastrar" action="#{turmaBean.salvarTurma()}" styleClass="btn btn-secondary"/>
+        </h:form>
+
+    </h:body>
+</html>

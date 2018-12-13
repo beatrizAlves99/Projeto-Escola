@@ -31,7 +31,7 @@
     </welcome-file-list>
 
 
-    <!--<security-constraint>
+    <security-constraint>
         <display-name>Administration</display-name>
         <web-resource-collection>
             <web-resource-name>administration</web-resource-name>
@@ -51,6 +51,6 @@
             <form-login-page>/login.xhtml</form-login-page>
             <form-error-page>/login.xhtml</form-error-page>
         </form-login-config>
-    </login-config>-->
+    </login-config>
 
 </web-app>

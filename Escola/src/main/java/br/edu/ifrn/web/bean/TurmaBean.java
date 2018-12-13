@@ -88,7 +88,7 @@ public class TurmaBean {
 
         turmamodel = new Turma();
         facesContext.getExternalContext().getFlash().setKeepMessages(true);
-        facesContext.addMessage(null, new FacesMessage(mensagem));
+      //  facesContext.addMessage(null, new FacesMessage(mensagem));
 
         return "turma.xhtml";
 
