@@ -1,0 +1,61 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:t="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:p="http://primefaces.org/ui">   
+    <f:metadata>
+        <f:viewParam value="#{disOferbean.idDisOfer}" name="id" />
+        <f:viewAction action="#{disOferbean.carregarLivro()}" />
+    </f:metadata>
+    <h:head>
+        <title>Disciplonas Ofertadas</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"/>
+
+        <!-- Compiled and minified JavaScript -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+
+    </h:head>
+    <h:body>
+        <nav>
+            <div class="nav-wrapper">
+                <a href="index.xhtml" class="brand-logo">Disciplinas</a>
+            </div>
+        </nav>
+        <f:metadata>
+            <f:viewParam value="#{disOferbean.idDisOfer}" name="idDisciplina" />
+        </f:metadata>
+        <h:form id="form-disofer"  style="form-horizontal" enctype="multipart/form-data" >
+            <h:inputHidden value="#{disOferbean.disOfermodel.id}" />
+            <div class="form-group">
+                <h:outputLabel value="Professor" for="nome"/><br/>
+                <h:inputText value="#{disOferbean.disOfermodel.professor.id}" id="nome" styleClass="form-control"/>
+                <h:message for="nome" style="color: red;"/>
+            </div>
+            <br/>
+            <div class="form-group">
+                <h:outputLabel value="Disciplina" for="dis"/><br/>
+                <h:inputText value="#{disOferbean.disOfermodel.disciplina.id}" id="dis" styleClass="form-control"/>
+                <h:message for="dis" style="color: red;"/>
+            </div>
+            <br />
+
+            <div class="form-group">
+                <h:outputLabel value="Turma" for="turma"/><br/>
+                <h:inputText value="#{disOferbean.disOfermodel.turma.id}" id="turma" styleClass="form-control"/>
+                <h:message for="turma" style="color: red;"/>
+            </div>
+            <br />
+            
+            <br />
+            
+            <br/>
+            <h:commandButton value="Cadastrar" action="#{disOferbean.salvarDisOfer()}" styleClass="btn btn-secondary"/>
+            <hr/>
+
+        </h:form>
+
+    </h:body>
+</html>

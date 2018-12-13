@@ -5,7 +5,9 @@
  */
 package br.edu.ifrn.web.bean;
 
+import br.edu.ifrn.web.controle.CursoControle;
 import br.edu.ifrn.web.controle.TurmaControle;
+import br.edu.ifrn.web.modelo.Curso;
 import br.edu.ifrn.web.modelo.Turma;
 import java.util.List;
 import javax.enterprise.inject.Model;
@@ -22,11 +24,14 @@ public class TurmaBean {
     @Inject
     private TurmaControle turmaDAO;
     @Inject
+    private CursoControle cursoDAO;
+    @Inject
     private Turma turmamodel;
     @Inject
     private FacesContext facesContext;
     
     private List<Turma> listaTurma;
+    private List<Curso> listacurso;
     
     private Integer idTurma;
 
@@ -101,6 +106,12 @@ public class TurmaBean {
         return listaTurma;
     }
     
+    public List<Curso> listarCurso() {
+        if (listacurso == null) {
+            listacurso = cursoDAO.listar();
+        }
+        return listacurso;
+    }
     
     public String atualizar(Integer id){
         return "turma.xhtml?id=" + String.valueOf(id);

@@ -51,6 +51,23 @@
                 <h:message for="fim" style="color: red;"/>
             </div>
             <br />
+            <div class="form-group">
+                <h:outputLabel value="Curso" for="curso"/><br/>
+                <h:inputText value="#{turmaBean.turmamodel.curso.id}" id="curso" styleClass="form-control"/>
+                <h:message for="curso" style="color: red;"/>
+            </div>
+            <br/>
+             <div class="form-group">
+                <h:outputLabel value="Curso" for="cursos"/><br/>
+                <h:selectManyListbox value="#{turmaBean.turmamodel.curso}"  id="cursos" styleClass="form-control">
+                    <f:selectItems value="#{turmaBean.listarCurso()}" 
+                                   var="curso" 
+                                   itemLabel="#{curso.nome}" 
+                                   itemValue="#{curso}"/>
+                </h:selectManyListbox>                    
+
+                <h:message for="autores" style="color: red;"/>
+            </div>
             
             <h:commandButton value="Cadastrar" action="#{turmaBean.salvarTurma()}" styleClass="btn btn-secondary"/>
         </h:form>
